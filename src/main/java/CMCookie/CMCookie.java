@@ -4,11 +4,22 @@
  */
 package CMCookie;
 
+<<<<<<< HEAD
 import GCdao.CustomerDAO;
+=======
+import dao.CustomerDAO;
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+=======
+/**
+ *
+ * @author Dang
+ */
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
 public class CMCookie {
 
     public static boolean isCustomerLogIn(HttpServletRequest request, HttpServletResponse response) {

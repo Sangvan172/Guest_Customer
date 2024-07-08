@@ -4,6 +4,14 @@
  */
 package model;
 
+<<<<<<< HEAD
+=======
+/**
+ *
+ * @author Huy
+ */
+
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
 import java.sql.Date;
 import java.util.List;
 

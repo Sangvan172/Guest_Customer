@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Gcontroller\GuestHome.class
 model\OrderDetail.class
 model\Cart.class
@@ -34,4 +35,26 @@ GCdao\BookDAO.class
 model\Category.class
 model\Book.class
 GCdao\CartDAO.class
+=======
+controller\guest\GuestMenu.class
+controller\guest\GuestRegister.class
+dao\BookDAO.class
+dao\CustomerDAO.class
+controller\customer\CustomerAboutUs.class
+dao\CategoryDAO.class
+controller\customer\CustomerLogout.class
+controller\guest\GuestHome.class
+controller\guest\GuestLogin.class
+controller\customer\CustomerHome.class
+dao\DBContext.class
+controller\guest\GuestAboutUs.class
+controller\customer\CustomerMenu.class
+controller\guestcustomer\SearchCategory.class
+model\Category.class
+model\Book.class
+controller\guestcustomer\SearchName.class
+model\Customer.class
+CMCookie\CMCookie.class
+controller\customer\CustomerBookDetail.class
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
 filter\CustomerFilter.class

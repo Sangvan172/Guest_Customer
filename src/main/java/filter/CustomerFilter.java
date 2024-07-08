@@ -112,19 +112,33 @@ public class CustomerFilter implements Filter {
         System.out.println(url);
         if (url.equals("/")) {
             if (!CMCookie.isCustomerLogIn(httpRequest, httpResponse)) {
+<<<<<<< HEAD
                 httpResponse.sendRedirect("/guest/Ghome");
             } else {
                 httpResponse.sendRedirect("/customer/Chome");
+=======
+                httpResponse.sendRedirect("/guest/home");
+            } else {
+                httpResponse.sendRedirect("/customer/home");
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
                 return;
             }
         }
         if (url.startsWith("/customer")) {
             if (!CMCookie.isCustomerLogIn(httpRequest, httpResponse)) {
+<<<<<<< HEAD
                 httpResponse.sendRedirect("/guest/Ghome");
             }
         }
         if(url.endsWith(".jsp")){
              httpResponse.sendRedirect("/customer/Chome");
+=======
+                httpResponse.sendRedirect("/guest/home");
+            }
+        }
+        if(url.endsWith(".jsp")){
+             httpResponse.sendRedirect("/customer/home");
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
         }
 
         Throwable problem = null;

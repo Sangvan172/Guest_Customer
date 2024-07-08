@@ -3,11 +3,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
+<<<<<<< HEAD
     <artifactId>Dang</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>Dang</name>
+=======
+    <artifactId>CMGuestCustomer1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>CMGuestCustomer1</name>
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -83,14 +91,27 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
+<<<<<<< HEAD
                     <source>21</source>
                     <target>21</target>
+=======
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                    <release>21</release>
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
+<<<<<<< HEAD
+=======
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

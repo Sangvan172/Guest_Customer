@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\Ccontroller\CustomerAboutUs.java
 C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\Ccontroller\CustomerAddToCart.java
 C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\Ccontroller\CustomerBookDetail.java
@@ -34,3 +35,26 @@ C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\model\OrderDetail.java
 C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\model\Voucher.java
 C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\service\VoucherService.java
 C:\Users\ACER\OneDrive\Máy tính\Dang\src\main\java\util\DatabaseUtil.java
+=======
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\CMCookie\CMCookie.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\customer\CustomerAboutUs.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\customer\CustomerBookDetail.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\customer\CustomerHome.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\customer\CustomerLogout.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\customer\CustomerMenu.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guest\GuestAboutUs.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guest\GuestHome.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guest\GuestLogin.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guest\GuestMenu.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guest\GuestRegister.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guestcustomer\SearchCategory.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\controller\guestcustomer\SearchName.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\dao\BookDAO.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\dao\CategoryDAO.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\dao\CustomerDAO.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\dao\DBContext.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\filter\CustomerFilter.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\model\Book.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\model\Category.java
+C:\Users\ACER\OneDrive\Máy tính\CMGuestCustomer1\src\main\java\model\Customer.java
+>>>>>>> 1a36827f8e868865cf4d29c7c69ffe6e00c99639
