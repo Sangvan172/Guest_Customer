@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Dang
+ * @author Huy
  */
 public class CustomerAboutUs extends HttpServlet {
    

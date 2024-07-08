@@ -13,7 +13,7 @@ import model.Category;
 
 /**
  *
- * @author Dang
+ * @author Huy
  */
 public class CategoryDAO extends DBContext {
 

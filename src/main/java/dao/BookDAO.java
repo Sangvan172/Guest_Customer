@@ -14,7 +14,7 @@ import model.Book;
 
 /**
  *
- * @author Dang
+ * @author Huy
  */
 public class BookDAO extends DBContext {
 

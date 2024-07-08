@@ -18,7 +18,7 @@ import model.Book;
 
 /**
  *
- * @author Dang
+ * @author Huy
  */
 public class CustomerMenu extends HttpServlet {
 

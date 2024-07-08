@@ -16,7 +16,7 @@ import model.Customer;
 
 /**
  *
- * @author Dang
+ * @author Huy
  */
 public class GuestRegister extends HttpServlet {
 

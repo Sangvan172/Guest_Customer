@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Dang
+ * @author Huy
  */
 public class Book {
 
