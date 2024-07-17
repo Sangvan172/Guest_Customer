@@ -4,8 +4,7 @@
  */
 package Ccontroller;
 
-import GCdao.CategoryDAO;
-import GCdao.BookDAO;
+import GCdao.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +12,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Category;
-import model.Book;
+import model.Order;
 
 /**
  *
  * @author Dang
  */
-public class CustomerMenu extends HttpServlet {
+public class CustomerUpdateHistory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class CustomerMenu extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CustomerMenu</title>");
+            out.println("<title>Servlet CustomerUpdateHistory</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CustomerMenu at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CustomerUpdateHistory at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,13 +58,41 @@ public class CustomerMenu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BookDAO f = new BookDAO();
-        CategoryDAO c = new CategoryDAO();
-        List<Category> categories = c.getAll();
-        List<Book> books = f.getAll();
-        request.setAttribute("books", books);
-        request.setAttribute("categories", categories);
-        request.getRequestDispatcher("Cmenu.jsp").forward(request, response);
+        String phone = CMCookie.CMCookie.getCustomerPhone(request, response);
+        OrderDAO or = new OrderDAO();
+        List<Order> orders = or.getAll(phone);
+        PrintWriter out = response.getWriter();
+        if (orders != null) {
+            for (Order o : orders) {
+                String a = "";
+                String b = "";
+                if (o.getStatus().equals("Waiting")) {
+                    a = "<button onclick=\"cancelOrder('" + o.getId() + "')\">Cancel</button>\n";
+                }
+                if (o.getStatus().equals("Waiting") || o.getStatus().equals("Preparing")) {
+                    b = "<div style=\"color: #0397d1;\" class=\"status\">" + o.getStatus() + "</div>\n";
+                }else
+                if (o.getStatus().equals("Cancelled") || o.getStatus().equals("Rejected")) {
+                    b = "<div style=\"color: #C21010;\" class=\"status\">" + o.getStatus() + "</div>\n";
+                } else {
+                    b = "<div style=\"color: #1ec708;\" class=\"status\">" + o.getStatus() + "</div>\n";
+                }
+                out.println("  <tr>\n"
+                        + "                                        <td>" + o.getId() + "</td>\n"
+                        + "                                        <td class=\"status\">\n"
+                        + b
+                        + "                                        <td>" + o.getOrderDate() + "</td>\n"
+                        + "                                        <td>" + o.getPay() + "</td>\n"
+                        + "                                        <td>" + o.getTotal() + "$</td>\n"
+                        + "                                        <td>\n"
+                        + "                                            <button onclick=\"viewOrder('" + o.getId() + "')\">\n"
+                        + "                                                View\n"
+                        + "                                            </button>\n"
+                        + a
+                        + "                                        </td>\n"
+                        + "                                    </tr>");
+            }
+        }
     }
 
     /**

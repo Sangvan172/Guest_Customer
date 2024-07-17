@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.customer;
+package Ccontroller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Huy
+ * @author Dang
  */
 public class CustomerAboutUs extends HttpServlet {
    
@@ -53,7 +53,7 @@ public class CustomerAboutUs extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       request.getRequestDispatcher("aboutUs.jsp").forward(request, response);
+       request.getRequestDispatcher("CaboutUs.jsp").forward(request, response);
     } 
 
     /** 

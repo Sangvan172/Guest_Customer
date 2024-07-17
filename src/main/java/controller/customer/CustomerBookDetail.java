@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.customer;
+package Ccontroller;
 
-import dao.BookDAO;
+import GCdao.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,7 +16,7 @@ import model.Book;
 
 /**
  *
- * @author Huy
+ * @author Dang
  */
 public class CustomerBookDetail extends HttpServlet {
 
@@ -65,7 +65,7 @@ public class CustomerBookDetail extends HttpServlet {
         if (book != null) {
             request.setAttribute("book", book);
             request.setAttribute("topFour", topFour);
-            request.getRequestDispatcher("bookDetail.jsp").forward(request, response);
+            request.getRequestDispatcher("CbookDetail.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/error/Error.html").forward(request, response);
         }

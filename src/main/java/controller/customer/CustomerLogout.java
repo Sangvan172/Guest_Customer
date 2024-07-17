@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.customer;
+package Ccontroller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Huy
+ * @author Dang
  */
 public class CustomerLogout extends HttpServlet {
 
@@ -60,7 +60,7 @@ public class CustomerLogout extends HttpServlet {
         cookie.setMaxAge(0);
         cookie.setPath("/");
         response.addCookie(cookie);
-        response.sendRedirect("/guest/home");
+        response.sendRedirect("/guest/Ghome");
     }
 
     /**
