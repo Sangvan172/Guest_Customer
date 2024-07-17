@@ -16,7 +16,7 @@ import model.Cart;
 
 /**
  *
- * @author Dang
+ * @author khang
  */
 public class CustomerCart extends HttpServlet {
 

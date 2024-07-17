@@ -4,7 +4,8 @@
  */
 package Ccontroller;
 
-import GCdao.BookDAO;
+import GCdao.CartDAO;
+import GCdao.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,13 +13,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Book;
+import model.Cart;
+import model.Customer;
 
 /**
  *
  * @author khang
  */
-public class CustomerBookDetail extends HttpServlet {
+public class CustomerPurchase extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,16 +39,16 @@ public class CustomerBookDetail extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CustomerBookDetail</title>");
+            out.println("<title>Servlet CustomerPurchase</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CustomerBookDetail at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CustomerPurchase at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -58,18 +60,23 @@ public class CustomerBookDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BookDAO f = new BookDAO();
-        String id = request.getParameter("id");
-        Book book = f.searchByID(id);
-        List<Book> topFour = f.getTopFourSeller();
-        if (book != null) {
-            request.setAttribute("book", book);
-            request.setAttribute("topFour", topFour);
-            request.getRequestDispatcher("CbookDetail.jsp").forward(request, response);
+        CustomerDAO c = new CustomerDAO();
+        CartDAO ca = new CartDAO();
+        String phone = CMCookie.CMCookie.getCustomerPhone(request, response);
+        Customer customer = c.searchByPhone(phone);
+        List<Cart> carts = ca.searchByPhone(phone);
+        if (!carts.isEmpty()) {
+            double sum = 0;
+            for (int i = 0; i < carts.size(); i++) {
+                sum += (double) carts.get(i).getQuantity() * carts.get(i).getBook().getRealPrice();
+            }
+            request.setAttribute("customer", customer);
+            request.setAttribute("carts", carts);
+            request.setAttribute("total", (double) Math.round(sum * 100) / 100);
+            request.getRequestDispatcher("Cpurchase.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/error/Error.html").forward(request, response);
+            request.getRequestDispatcher("error/Error.html").forward(request, response);
         }
-
     }
 
     /**

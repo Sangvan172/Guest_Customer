@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Dang
+ * @author khang
  */
 public class CustomerAddToCart extends HttpServlet {
 

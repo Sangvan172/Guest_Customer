@@ -4,7 +4,6 @@
  */
 package Ccontroller;
 
-import GCdao.CartDAO;
 import GCdao.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,14 +12,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Cart;
 import model.Order;
 
 /**
  *
  * @author khang
  */
-public class CustomerFinishOrder extends HttpServlet {
+public class CustomerUpdateHistory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class CustomerFinishOrder extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CustomerFinishOrder</title>");
+            out.println("<title>Servlet CustomerUpdateHistory</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CustomerFinishOrder at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CustomerUpdateHistory at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,18 +58,41 @@ public class CustomerFinishOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartDAO c = new CartDAO();
-        String note = request.getParameter("note") == null ? "" : request.getParameter("note");
-        String delivery = request.getParameter("delivery");
-        String pay = request.getParameter("pay");
         String phone = CMCookie.CMCookie.getCustomerPhone(request, response);
-        double total = Double.parseDouble(request.getParameter("total"));
-        List<Cart> carts = c.searchByPhone(phone);
-      
-        OrderDAO order = new OrderDAO();
-        order.add(new Order(phone, delivery, pay, note, total), carts);
-          c.deleteAll(phone);
-        response.sendRedirect("/customer/Chistory");
+        OrderDAO or = new OrderDAO();
+        List<Order> orders = or.getAll(phone);
+        PrintWriter out = response.getWriter();
+        if (orders != null) {
+            for (Order o : orders) {
+                String a = "";
+                String b = "";
+                if (o.getStatus().equals("Waiting")) {
+                    a = "<button onclick=\"cancelOrder('" + o.getId() + "')\">Cancel</button>\n";
+                }
+                if (o.getStatus().equals("Waiting") || o.getStatus().equals("Preparing")) {
+                    b = "<div style=\"color: #0397d1;\" class=\"status\">" + o.getStatus() + "</div>\n";
+                }else
+                if (o.getStatus().equals("Cancelled") || o.getStatus().equals("Rejected")) {
+                    b = "<div style=\"color: #C21010;\" class=\"status\">" + o.getStatus() + "</div>\n";
+                } else {
+                    b = "<div style=\"color: #1ec708;\" class=\"status\">" + o.getStatus() + "</div>\n";
+                }
+                out.println("  <tr>\n"
+                        + "                                        <td>" + o.getId() + "</td>\n"
+                        + "                                        <td class=\"status\">\n"
+                        + b
+                        + "                                        <td>" + o.getOrderDate() + "</td>\n"
+                        + "                                        <td>" + o.getPay() + "</td>\n"
+                        + "                                        <td>" + o.getTotal() + "$</td>\n"
+                        + "                                        <td>\n"
+                        + "                                            <button onclick=\"viewOrder('" + o.getId() + "')\">\n"
+                        + "                                                View\n"
+                        + "                                            </button>\n"
+                        + a
+                        + "                                        </td>\n"
+                        + "                                    </tr>");
+            }
+        }
     }
 
     /**
@@ -85,7 +106,7 @@ public class CustomerFinishOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     /**

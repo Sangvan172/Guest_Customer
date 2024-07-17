@@ -17,7 +17,7 @@ import model.Book;
 
 /**
  *
- * @author Dang
+ * @author khang
  */
 public class CustomerHome extends HttpServlet {
    
